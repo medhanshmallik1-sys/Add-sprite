@@ -46,3 +46,16 @@ screen.fill(bg_color)
 exit = False
 clock = pygame.time.Clock()
 while not exit:
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            exit = True
+        elif event.type == SPRITE_COLOR_CHANGE_EVENT:
+            sp1.change_color()
+        elif event.type == BACKGROUND_COLOR_CHANGE_EVENT:
+            change_background_color()
+    all_sprites_list.update()
+    screen.fill(bg_color)
+    all_sprites_list.draw(screen)
+    pygame.display.flip()
+    clock.tick(240)
+    pygame.quit()
